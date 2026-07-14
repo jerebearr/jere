@@ -1,13 +1,24 @@
-# Roblox Game
+# Roblox Game and Pickleball Paddle Projects
 
-This repository contains the source for our Roblox game.
+This repository contains two projects developed by our team:
+
+- `Roblox/` — the Roblox game project.
+- `PickleballPaddle/` — the pickleball paddle design and development project.
 
 ## Team workflow
 
 1. Pull the latest `main` branch before starting work.
-2. Create a branch for each feature or fix, for example `feature/shop-ui`.
-3. Make and test your changes locally.
-4. Commit with a short message and push the branch to GitHub.
-5. Open a pull request for the teammate to review before merging into `main`.
+2. Create a branch for each feature, experiment, or fix. Examples:
+   - `feature/new-obby-level`
+   - `design/paddle-v2`
+3. Keep changes for each project inside its own folder.
+4. Test or review your changes locally.
+5. Commit with a short, clear message.
+6. Push your branch to GitHub and open a pull request.
+7. Have the other teammate review the pull request before merging into `main`.
 
-Keep the Roblox project files and source code in this folder so Git can track them.
+## Keeping projects organized
+
+Do not place Roblox files in `PickleballPaddle/` or paddle files in `Roblox/`.
+Keep older paddle designs and major revisions instead of overwriting them.
+Never commit passwords, API keys, or other private information.
