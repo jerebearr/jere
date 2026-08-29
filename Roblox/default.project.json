@@ -1,0 +1,21 @@
+{
+  "name": "FarmRNGPrototype",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "FarmRNG": {
+        "$path": "ReplicatedStorage/FarmRNG"
+      }
+    },
+    "ServerScriptService": {
+      "FarmRNG": {
+        "$path": "ServerScriptService/FarmRNG"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "StarterPlayer/StarterPlayerScripts"
+      }
+    }
+  }
+}
