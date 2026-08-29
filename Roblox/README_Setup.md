@@ -1,6 +1,6 @@
 # Farm RNG Prototype Source
 
-This is the first coding pass for the Roblox farming RNG game.
+This branch contains the first code pass for the Roblox farming RNG game.
 
 It includes:
 - 40-plot price curve: Plot 2 = $250, Plot 40 = $2Qi
@@ -14,62 +14,48 @@ It includes:
 - World-synced Soil Chip shop restocking every 5 minutes
 - Every chip guaranteed at least once per UTC day
 - Soil Chips lasting 5 full machine presses
-- Infinite stacked backpack inventory
-- Risk fusion and safe fusion logic
+- Infinite stacked backpack inventory data
+- Fusion config values for the later fusion UI
 - Super Mart sale interval config from 60 seconds down to 1 second
-- Basic test UI created by a LocalScript
+- Basic temporary test UI created by a LocalScript
 
-## Roblox Studio placement
-
-Create these folders/scripts in Roblox Studio:
+## Current prototype structure
 
 ```text
-ReplicatedStorage
-  FarmRNG
-    Config
-      ChipShopConfig
-      FarmConfig
-      FusionConfig
-      LandConfig
-      LuckConfig
-      MonetizationConfig
-      PlotPriceConfig
-      UpgradeConfig
-    Shared
-      NumberFormatter
-      WeightedRandom
-
-ServerScriptService
-  FarmRNG
-    Bootstrap
-    Services
-      ChipShopService
-      CurrencyService
-      FarmInventoryService
-      FusionService
-      HarvestReelService
-      LandService
-      PlayerDataService
-      SuperMartService
-      UpgradeService
-
-StarterPlayer
-  StarterPlayerScripts
-    FarmRNGClient
+Roblox/
+  default.project.json
+  ReplicatedStorage/
+    FarmRNG/
+      Config/
+        ChipShopConfig.lua
+        FarmConfig.lua
+        FusionConfig.lua
+        LandConfig.lua
+        LuckConfig.lua
+        MonetizationConfig.lua
+        PlotPriceConfig.lua
+        UpgradeConfig.lua
+      Shared/
+        NumberFormatter.lua
+        WeightedRandom.lua
+  ServerScriptService/
+    FarmRNG/
+      Bootstrap.server.lua
+  StarterPlayer/
+    StarterPlayerScripts/
+      FarmRNGClient.client.lua
 ```
 
-Each `.lua` file in this package should become a `ModuleScript`, except:
+`Bootstrap.server.lua` is currently a single prototype server script. Later, as the game gets bigger, we can split it into service ModuleScripts such as `HarvestReelService`, `LandService`, `TruckService`, and `SuperMartService`.
 
-- `Bootstrap.server.lua` should be a normal Script named `Bootstrap`
-- `FarmRNGClient.client.lua` should be a LocalScript named `FarmRNGClient`
+## Rojo use
 
-## Important Studio setting
+The `default.project.json` file is included for Rojo-style syncing/building. If you are manually placing scripts in Roblox Studio, use this mapping:
 
-For DataStore testing, turn on:
-
-`Game Settings > Security > Enable Studio Access to API Services`
-
-If you do not enable that, DataStore saves may warn in output. The prototype will still create default data for testing.
+- `ReplicatedStorage/FarmRNG/Config/*.lua` -> ModuleScripts under `ReplicatedStorage > FarmRNG > Config`
+- `ReplicatedStorage/FarmRNG/Shared/*.lua` -> ModuleScripts under `ReplicatedStorage > FarmRNG > Shared`
+- `ServerScriptService/FarmRNG/Bootstrap.server.lua` -> normal Script named `Bootstrap`
+- `StarterPlayer/StarterPlayerScripts/FarmRNGClient.client.lua` -> LocalScript named `FarmRNGClient`
 
 ## First test flow
 
@@ -84,12 +70,14 @@ Remove or secure these RemoteFunctions before publishing:
 - `GiveTestingMoney`
 - `WipeTestingData`
 
-## Next coding step
+## Not finished yet
 
-The next step is the actual map gameplay:
+The prototype does not yet include the real map systems:
 - 40 physical plot parts
 - hand-delivery crate pickup
 - placing farms onto plots
 - truck buying and dispatching
 - Super Mart claim zone
 - adjacency/road-bonus calculations
+- real DataStore saving
+- Robux product/gamepass wiring
